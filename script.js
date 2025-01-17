@@ -6,12 +6,10 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
 
     function GameBoard(activePlayer) {
         let boardState = [
-            null, null, null,
-            null, null, null,
-            null, null, null
+            " ", " ", " ",
+            " ", " ", " ",
+            " ", " ", " "
         ]
-
-        let activePlayer = activePlayer;
 
         return {boardState, activePlayer}
     }
@@ -20,4 +18,14 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
     let oPlayer = Player(oPlayername);
     let gameBoard = GameBoard(xPlayer);
 
+
+    function printBoardState() {
+        let printOut =
+            "|" + gameBoard.boardState[0] + "|" + gameBoard.boardState[1] + "|" + gameBoard.boardState[2] + "|\n" +
+            "|" + gameBoard.boardState[3] + "|" + gameBoard.boardState[4] + "|" + gameBoard.boardState[5] + "|\n" +
+            "|" + gameBoard.boardState[6] + "|" + gameBoard.boardState[7] + "|" + gameBoard.boardState[8] + "|";
+        console.log(printOut);
+    }
+
+    return {gameBoard, printBoardState}
 }
