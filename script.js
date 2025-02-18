@@ -4,14 +4,14 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
         return {name, token, score};
     }
 
-    function GameBoard(activePlayer) {
+    function GameBoard(activePlayer, inactivePlayer) {
         let boardState = [
             " ", " ", " ",
             " ", " ", " ",
             " ", " ", " "
         ]
 
-        return {boardState, activePlayer}
+        return {boardState, activePlayer, inactivePlayer}
     }
 
     //initialize GameController Data
