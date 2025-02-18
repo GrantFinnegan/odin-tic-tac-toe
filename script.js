@@ -42,6 +42,12 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
             gameBoard.activePlayer = gameBoard.inactivePlayer
             gameBoard.inactivePlayer = temp;
         }
+        else{
+            console.log(
+                `Position already occupied, placement failed.
+                ${gameBoard.activePlayer.name} is still up, playing with "${gameBoard.activePlayer.token}".`
+            );
+        }
     }
 
     return {gameBoard, printBoardState, placeToken}
