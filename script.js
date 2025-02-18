@@ -1,7 +1,7 @@
 function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
-    function Player(name) {
+    function Player(name, token) {
         let score = 0;
-        return {name, score};
+        return {name, token, score};
     }
 
     function GameBoard(activePlayer) {
@@ -15,8 +15,8 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
     }
 
     //initialize GameController Data
-    let xPlayer = Player(xPlayerName);
-    let oPlayer = Player(oPlayername);
+    let xPlayer = Player(xPlayerName, "X");
+    let oPlayer = Player(oPlayername, "O");
     let gameBoard = GameBoard(xPlayer);
 
 
