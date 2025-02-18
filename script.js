@@ -17,7 +17,7 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
     //initialize GameController Data
     let xPlayer = Player(xPlayerName, "X");
     let oPlayer = Player(oPlayername, "O");
-    let gameBoard = GameBoard(xPlayer);
+    let gameBoard = GameBoard(xPlayer, oPlayer);
 
 
     function printBoardState() {
@@ -32,5 +32,17 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
         console.log(printOut);
     }
 
-    return {gameBoard, printBoardState}
+    function placeToken(position = 0) {
+        //if space is open
+        if (gameBoard.boardState[position] == " ") {
+            //place token
+            gameBoard.boardState[position] = gameBoard.activePlayer.token;
+            //swap active player
+            let temp = gameBoard.activePlayer;
+            gameBoard.activePlayer = gameBoard.inactivePlayer
+            gameBoard.inactivePlayer = temp;
+        }
+    }
+
+    return {gameBoard, printBoardState, placeToken}
 }
