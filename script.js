@@ -19,6 +19,33 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
     let oPlayer = Player(oPlayername, "O");
     let gameBoard = GameBoard(xPlayer, oPlayer);
 
+    function checkIfWinner(token, boardState) {
+        if (
+            //rows
+            (boardState[0] == token && boardState[1] == token && boardState[2] == token)
+            ||
+            (boardState[3] == token && boardState[4] == token && boardState[5] == token)
+            ||
+            (boardState[6] == token && boardState[7] == token && boardState[8] == token)
+            ||
+            //columns
+            (boardState[0] == token && boardState[3] == token && boardState[6] == token)
+            ||
+            (boardState[1] == token && boardState[4] == token && boardState[7] == token)
+            ||
+            (boardState[2] == token && boardState[5] == token && boardState[8] == token)
+            ||
+            //diagonals
+            (boardState[0] == token && boardState[4] == token && boardState[8] == token)
+            ||
+            (boardState[6] == token && boardState[4] == token && boardState[2] == token)
+        ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     function printBoardState() {
         //Example printout:
@@ -36,7 +63,7 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
         //if space is open
         if (gameBoard.boardState[position] == " ") {
             //place token
-            gameBoard.boardState[position] = gameBoard.activePlayer.token;
+            gameBoard.boardState[position] = gameBoard.activetoken;
             //swap active player
             let temp = gameBoard.activePlayer;
             gameBoard.activePlayer = gameBoard.inactivePlayer
@@ -53,9 +80,9 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
         }
 
         //Display state of game
-        console.log(`${gameBoard.activePlayer.name} is up, playing with "${gameBoard.activePlayer.token}"`);
+        console.log(`${gameBoard.activename} is up, playing with "${gameBoard.activetoken}"`);
         this.printBoardState();
     }
 
-    return {gameBoard, printBoardState, placeToken}
+    return {gameBoard, printBoardState, placeToken, checkIfWinner}
 }
