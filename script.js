@@ -44,8 +44,7 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
         }
         else{
             console.log(
-                `Position already occupied, placement failed.
-                ${gameBoard.activePlayer.name} is still up, playing with "${gameBoard.activePlayer.token}".`
+                `Position already occupied, placement failed.\n${gameBoard.activePlayer.name} is still up, playing with "${gameBoard.activePlayer.token}".`
             );
         }
     }
