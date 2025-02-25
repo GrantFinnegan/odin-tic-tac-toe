@@ -41,12 +41,20 @@ function GameController (xPlayerName = "X-player", oPlayername = "O-player") {
             let temp = gameBoard.activePlayer;
             gameBoard.activePlayer = gameBoard.inactivePlayer
             gameBoard.inactivePlayer = temp;
+
+            console.log(
+                `Placement Successful`
+            );
         }
         else{
             console.log(
-                `Position already occupied, placement failed.\n${gameBoard.activePlayer.name} is still up, playing with "${gameBoard.activePlayer.token}".`
+                `Placement Failed: Position already occupied.`
             );
         }
+
+        //Display state of game
+        console.log(`${gameBoard.activePlayer.name} is up, playing with "${gameBoard.activePlayer.token}"`);
+        this.printBoardState();
     }
 
     return {gameBoard, printBoardState, placeToken}
